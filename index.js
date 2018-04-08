@@ -1,12 +1,13 @@
 const azure = require('azure');
-const mysql = require('mysql2');
 
 var http = require('http');
 
 var server = http.createServer(function(request, response) {
 
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end("<h1>Hello World! </h1>");
+    response.writeHead(200, {"Content-Type": "text/html"});
+    response.end("<center>"+
+		"<h1>Managment UI</h1>"+
+		"</center>");
 	
 });
 
@@ -15,16 +16,9 @@ server.listen(port);
 
 
 const azureKey = 'Endpoint=sb://servicequeues.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=AUNiefT6dHz3ivqbYvpteI+LlwvOWE2M0OleRycSXzs=';
-const sqlAcc = {
-    host: 'ww-user-db.mysql.database.azure.com',
-    user: 'mysqldbuser@ww-user-db',
-    password: 'z5CNFHhY!',
-    port: 3306,
-    ssl: true
-};
+
 
 const queueSvc = azure.createServiceBusService(azureKey);
-const sqlConnection = mysql.createConnection(sqlAcc);
 
 var message = {
 	keks: 'test',
@@ -47,7 +41,3 @@ queueSvc.receiveQueueMessage('user-send', function(error, receivedMessage){
 	}
 });
 
-sqlConnection.connect(function(err) {
-	if (err) throw err;
-	console.log("Connected!");
-});
