@@ -3,3 +3,11 @@
 body {
 	padding: 0px;
 }
+
+.sidebar {
+	position: fixed;
+	top: 56px;
+	left: 0px;
+	bottom: 0px;
+	background-color: gray;
+}
