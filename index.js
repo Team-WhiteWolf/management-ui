@@ -1,6 +1,19 @@
 const azure = require('azure');
 const mysql = require('mysql2');
 
+var http = require('http');
+
+var server = http.createServer(function(request, response) {
+
+    response.writeHead(200, {"Content-Type": "text/plain"});
+    response.end("<h1>Hello World!</h1>");
+	
+});
+
+var port = process.env.PORT || 1337;
+server.listen(port);
+
+
 const azureKey = 'Endpoint=sb://servicequeues.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=AUNiefT6dHz3ivqbYvpteI+LlwvOWE2M0OleRycSXzs=';
 const sqlAcc = {
     host: 'ww-user-db.mysql.database.azure.com',
