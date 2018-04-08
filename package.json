@@ -1,0 +1,37 @@
+{
+  "name": "management-ui",
+  "version": "0.1.0",
+  "description": "The UI for the white wolf project",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "browserify": "^16.1.1",
+    "browserify-css": "^0.14.0",
+    "budo": "^11.2.0",
+    "uglify-js": "^3.3.20"
+  },
+  "scripts": {
+    "postinstall": "browserify -t browserify-css index.js > app.js",
+    "start": "budo index.js --serve app.js --live -- -t browserify-css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Team-WhiteWolf/management-ui.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Team-WhiteWolf/management-ui/issues"
+  },
+  "homepage": "https://github.com/Team-WhiteWolf/management-ui#readme",
+  "browserify-css": {
+    "autoInject": false,
+    "inlineImages": true,
+    "minify": true,
+    "output": "app.css"
+  }
+}
